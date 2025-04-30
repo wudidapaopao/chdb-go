@@ -54,15 +54,18 @@ jobs:
           make build
     - name: Test
       run: go test ./chdb-purego -gcflags="all=-N -l" -c -o mytest.test
-    - name: 运行测试并捕获堆栈
-      run: |
-        lldb --batch \
-        -o "settings set target.process.unwind-on-error-in-expressions false" \
-        -o "run" \
-        -o "thread backtrace all" \
-        -o "quit" \
-        ./mytest.test -- --test.v > lldb.log 2>&1 || true
-        cat lldb.log
+    - name: Test2
+        ulimit -c unlimited && (./mytest.test --test.v || (lldb -c `ls -t ./cores.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
+
+    # - name: 运行测试并捕获堆栈
+    #   run: |
+    #     lldb --batch \
+    #     -o "settings set target.process.unwind-on-error-in-expressions false" \
+    #     -o "run" \
+    #     -o "thread backtrace all" \
+    #     -o "quit" \
+    #     ./mytest.test -- --test.v > lldb.log 2>&1 || true
+    #     cat lldb.log
     - name: Test main
       run: ./chdb-go "SELECT 12345"
 
