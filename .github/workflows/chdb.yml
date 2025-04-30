@@ -57,9 +57,9 @@ jobs:
     - name: 运行测试并捕获堆栈
       run: |
         lldb --batch \
+        -o "settings set target.process.unwind-on-error-in-expressions false" \
         -o "run" \
-        -o "expr -u 0 --" \
-        -o "thread backtrace" \
+        -o "thread backtrace all" \
         -o "quit" \
         ./mytest.test -- --test.v > lldb.log 2>&1 || true
         cat lldb.log
