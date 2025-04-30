@@ -56,7 +56,12 @@ jobs:
       run: go test ./chdb-purego -gcflags="all=-N -l" -c -o mytest.test
     - name: Test2
       run: ulimit -c unlimited && (./mytest.test --test.v || (lldb -c `ls -t ./cores.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
-
+    - name: Test3
+      run: ./mytest.test --test.v || true
+    - name: Analyze core dump with GDB
+      run: |
+        LATEST_CORE=$(ls -t core.* | head -1)
+        lldb -c $LATEST_CORE -o "bt" -o "exit"
     # - name: 运行测试并捕获堆栈
     #   run: |
     #     lldb --batch \
