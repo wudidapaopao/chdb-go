@@ -40,6 +40,7 @@ jobs:
         ulimit -c unlimited
         sudo sysctl -w kern.coredump=1
         sudo sysctl kern.corefile=./core.%P
+        sudo chmod 1777 ./
     - name: Fetch library
       run: |
           make install
