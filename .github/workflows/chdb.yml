@@ -55,7 +55,7 @@ jobs:
     - name: Test
       run: go test ./chdb-purego -gcflags="all=-N -l" -c -o mytest.test
     - name: Test2
-        ulimit -c unlimited && (./mytest.test --test.v || (lldb -c `ls -t ./cores.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
+      run: ulimit -c unlimited && (./mytest.test --test.v || (lldb -c `ls -t ./cores.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
 
     # - name: 运行测试并捕获堆栈
     #   run: |
