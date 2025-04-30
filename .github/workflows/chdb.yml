@@ -54,7 +54,6 @@ jobs:
     - name: Test
       run: make test || true
     - name: Analyze core dump with LLDB
-      if: ${{ failure() }}
       run: |
         LATEST_CORE=$(ls -t core.* | head -1)
         lldb -c $LATEST_CORE -o "bt" -o "exit"
