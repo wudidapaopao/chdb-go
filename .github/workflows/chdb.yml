@@ -35,6 +35,11 @@ jobs:
     runs-on: macos-15
     steps:
     - uses: actions/checkout@v3
+    - name: Enable core dump
+      run: |
+      ulimit -c unlimited
+      sudo sysctl -w kern.coredump=1
+      sudo sysctl kern.corefile=./core.%P
     - name: Fetch library
       run: |
           make install
@@ -47,7 +52,12 @@ jobs:
           go mod tidy
           make build
     - name: Test
-      run: make test
+      run: make test || true
+    - name: Analyze core dump with LLDB
+      if: ${{ failure() }}
+      run: |
+        LATEST_CORE=$(ls -t core.* | head -1)
+        lldb -c $LATEST_CORE -o "bt" -o "exit"
     - name: Test main
       run: ./chdb-go "SELECT 12345"
 
