@@ -58,6 +58,7 @@ jobs:
       run: |
         lldb --batch \
         -o "run" \
+        -o "expr -u 0 --" \
         -o "thread backtrace" \
         -o "quit" \
         ./mytest.test -- --test.v > lldb.log 2>&1 || true
