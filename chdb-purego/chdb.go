@@ -108,12 +108,18 @@ func newChdbConn(conn **chdb_conn) ChdbConn {
 		conn: conn,
 	}
 	// runtime.SetFinalizer(c, c.Close)
+	fmt.Printf("[newChdbConn] conn指针地址：%p, *conn地址：%p\n",
+        unsafe.Pointer(conn),
+        unsafe.Pointer(*conn))
 	return c
 }
 
 // Close implements ChdbConn.
 func (c *connection) Close() {
 	if c.conn != nil {
+		fmt.Printf("[Close] conn指针地址：%p, *conn地址：%p\n",
+            unsafe.Pointer(c.conn),
+            unsafe.Pointer(*c.conn))
 		closeConn(c.conn)
 	}
 }
