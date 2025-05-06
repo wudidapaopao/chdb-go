@@ -44,6 +44,11 @@ jobs:
     # - name: Fetch library
     #   run: |
     #       make install
+    - name: Install libchdb
+      run: |
+        sudo mkdir -p /usr/local/lib /usr/local/include
+        sudo cp ./libchdb.so /usr/local/lib/
+        sudo cp ./chdb.h /usr/local/include/
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
