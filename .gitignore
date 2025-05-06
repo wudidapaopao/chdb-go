@@ -10,7 +10,7 @@ chdb-go
 *.exe
 *.exe~
 *.dll
-*.so
+# *.so
 *.dylib
 libchdb.tar.gz
 
