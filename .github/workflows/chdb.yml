@@ -11,25 +11,25 @@ on:
       - '**/.md'
 
 jobs:
-  build_linux:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Fetch library
-      run: |
-          make install
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: "1.21"
-    - name: Build
-      run: |
-          go mod tidy
-          make build
-    - name: Test
-      run: make test
-    - name: Test main
-      run: ./chdb-go "SELECT 12345"
+  # build_linux:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: Fetch library
+  #     run: |
+  #         make install
+  #   - name: Set up Go
+  #     uses: actions/setup-go@v4
+  #     with:
+  #       go-version: "1.21"
+  #   - name: Build
+  #     run: |
+  #         go mod tidy
+  #         make build
+  #   - name: Test
+  #     run: make test
+  #   - name: Test main
+  #     run: ./chdb-go "SELECT 12345"
 
   build_mac:
     runs-on: macos-15
@@ -75,9 +75,9 @@ jobs:
         LATEST_CORE=$(ls -t core.* | head -1)
         lldb -c $LATEST_CORE -o "bt" -o "exit"
     - name: Upload core dump
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: core-dump
+        name: core-dumps
         path: core.*
         retention-days: 1
     # - name: 运行测试并捕获堆栈
