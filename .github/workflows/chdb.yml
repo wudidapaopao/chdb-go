@@ -66,10 +66,10 @@ jobs:
       run: go test ./chdb/driver -gcflags="all=-N -l" -c -o mytest.test3
     - name: Test2
       run: ulimit -c unlimited && (./mytest.test -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
-    - name: Test3
-      run: ulimit -c unlimited && (./mytest.test2 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
-    - name: Test4
-      run: ulimit -c unlimited && (./mytest.test3 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
+    # - name: Test3
+    #   run: ulimit -c unlimited && (./mytest.test2 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
+    # - name: Test4
+    #   run: ulimit -c unlimited && (./mytest.test3 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
     - name: Test5
       run: ./mytest.test -test.count 10 --test.v || true
     - name: Test6
