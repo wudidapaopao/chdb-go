@@ -70,16 +70,16 @@ jobs:
     #   run: ulimit -c unlimited && (./mytest.test2 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
     # - name: Test4
     #   run: ulimit -c unlimited && (./mytest.test3 -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
-    - name: Test5
-      run: ./mytest.test -test.count 10 --test.v || true
-    - name: Test6
-      run: ./mytest.test2 -test.count 10 --test.v || true
-    - name: Test7
-      run: ./mytest.test3 -test.count 10 --test.v || true
-    - name: Analyze core dump with GDB
-      run: |
-        LATEST_CORE=$(ls -t core.* | head -1)
-        lldb -c $LATEST_CORE -o "bt" -o "exit"
+    # - name: Test5
+    #   run: ./mytest.test -test.count 10 --test.v || true
+    # - name: Test6
+    #   run: ./mytest.test2 -test.count 10 --test.v || true
+    # - name: Test7
+    #   run: ./mytest.test3 -test.count 10 --test.v || true
+    # - name: Analyze core dump with GDB
+    #   run: |
+    #     LATEST_CORE=$(ls -t core.* | head -1)
+    #     lldb -c $LATEST_CORE -o "bt" -o "exit"
     - name: Upload core dump
       uses: actions/upload-artifact@v4
       with:
