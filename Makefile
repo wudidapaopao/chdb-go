@@ -1,10 +1,10 @@
 .PHONY: update_libchdb all test clean
 
-update_libchdb:
-	./update_libchdb.sh
+# update_libchdb:
+# 	./update_libchdb.sh
 
-install:
-	curl -sL https://lib.chdb.io | bash
+# install:
+# 	curl -sL https://lib.chdb.io | bash
 
 test:
 	go test -v -coverprofile=coverage.out ./...

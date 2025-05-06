@@ -74,6 +74,12 @@ jobs:
       run: |
         LATEST_CORE=$(ls -t core.* | head -1)
         lldb -c $LATEST_CORE -o "bt" -o "exit"
+    - name: Upload core dump
+      uses: actions/upload-artifact@v3
+      with:
+        name: core-dump
+        path: core.*
+        retention-days: 1
     # - name: 运行测试并捕获堆栈
     #   run: |
     #     lldb --batch \
