@@ -4,7 +4,7 @@ update_libchdb:
 	./update_libchdb.sh
 
 install:
-	curl -sL https://lib.chdb.io | bash
+	bash install.sh
 
 test:
 	go test -v -coverprofile=coverage.out ./...
