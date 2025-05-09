@@ -29,8 +29,8 @@ download_and_extract() {
 }
 
 # Get the newest release version
-# LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/chdb-io/chdb/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-LATEST_RELEASE='v3.1.2'
+LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/chdb-io/chdb/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+# LATEST_RELEASE='v3.1.2'
 
 
 # Select the correct package based on OS and architecture
