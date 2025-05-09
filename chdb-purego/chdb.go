@@ -108,33 +108,33 @@ func newChdbConn(conn **chdb_conn) ChdbConn {
 		conn: conn,
 	}
 	// runtime.SetFinalizer(c, c.Close)
-	fmt.Printf("[newChdbConn] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
-		unsafe.Pointer(conn),
-		unsafe.Pointer(*conn),
-		(*conn).server,
-		(*conn).connected,
-		(*conn).queue)
+	// fmt.Printf("[newChdbConn] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
+	// 	unsafe.Pointer(conn),
+	// 	unsafe.Pointer(*conn),
+	// 	(*conn).server,
+	// 	(*conn).connected,
+	// 	(*conn).queue)
 	return c
 }
 
 // Close implements ChdbConn.
 func (c *connection) Close() {
-	fmt.Printf("[Close2]")
+	// fmt.Printf("[Close2]")
 	if c.conn != nil {
-		originalConn := *c.conn
-		fmt.Printf("[Close] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
-			unsafe.Pointer(c.conn),
-			unsafe.Pointer(*c.conn),
-			(*c.conn).server,
-			(*c.conn).connected,
-			(*c.conn).queue)
+		// originalConn := *c.conn
+		// fmt.Printf("[Close] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
+		// 	unsafe.Pointer(c.conn),
+		// 	unsafe.Pointer(*c.conn),
+		// 	(*c.conn).server,
+		// 	(*c.conn).connected,
+		// 	(*c.conn).queue)
 		closeConn(c.conn)
-		fmt.Printf("[Close3] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
-			unsafe.Pointer(c.conn),
-			unsafe.Pointer(*c.conn),
-            originalConn.server,
-			originalConn.connected,
-			originalConn.queue)
+		// fmt.Printf("[Close3] conn指针地址：%p, *conn地址：%p, conn结构成员：server=%p, connected=%t, queue=%p\n",
+		// 	unsafe.Pointer(c.conn),
+		// 	unsafe.Pointer(*c.conn),
+        //     originalConn.server,
+		// 	originalConn.connected,
+		// 	originalConn.queue)
 	}
 }
 
