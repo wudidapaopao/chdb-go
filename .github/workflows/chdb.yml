@@ -65,7 +65,6 @@ jobs:
     - name: Testtt
       run: go test ./chdb/driver -gcflags="all=-N -l" -c -o mytest.test3
     - name: Test2
-      # run: ulimit -c unlimited && (./mytest.test -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
       run: ulimit -c unlimited && (./mytest.test -test.count 100 --test.v
     - name: Test3
       run: ulimit -c unlimited && (./mytest.test2 -test.count 100 --test.v
@@ -96,6 +95,7 @@ jobs:
     #     -o "quit" \
     #     ./mytest.test -- --test.v > lldb.log 2>&1 || true
     #     cat lldb.log
+    # run: ulimit -c unlimited && (./mytest.test -test.count 10 --test.v || (lldb -c `ls -t ./core.* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
     - name: Test main
       run: ./chdb-go "SELECT 12345"
 
