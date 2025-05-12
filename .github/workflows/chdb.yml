@@ -43,6 +43,7 @@ jobs:
         sudo chmod 1777 ./
     - name: Check Library Architecture
       run: |
+        git lfs pull --include="*.so"
         file libchdb.so  # 查看文件类型
         md5sum libchdb.so
         ls -l libchdb.so
