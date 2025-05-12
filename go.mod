@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/c-bata/go-prompt v0.2.6
-	github.com/ebitengine/purego v0.8.3
+	github.com/ebitengine/purego v0.9.0-alpha.4
 	github.com/huandu/go-sqlbuilder v1.27.3
 	github.com/parquet-go/parquet-go v0.23.0
 	golang.org/x/sys v0.22.0
