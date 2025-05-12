@@ -6,7 +6,7 @@
 import "github.com/chdb-io/chdb-go/chdb"
 ```
 
-## Index
+## Index 
 
 - [func Query\(queryStr string, outputFormats ...string\) \(result chdbpurego.ChdbResult, err error\)](<#Query>)
 - [func QueryStream\(queryStr string, outputFormats ...string\) \(result chdbpurego.ChdbStreamResult, err error\)](<#QueryStream>)
