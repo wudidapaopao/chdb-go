@@ -32,7 +32,7 @@ jobs:
   #     run: ./chdb-go "SELECT 12345"
 
   build_mac:
-    runs-on: macos-15
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v3
     - name: Enable core dump
@@ -41,16 +41,16 @@ jobs:
         sudo sysctl -w kern.coredump=1
         sudo sysctl kern.corefile=./core.%P
         sudo chmod 1777 ./
-    - name: Check Library Architecture
-      run: |
-        git lfs pull --include="*.so"
-        file libchdb.so  # 查看文件类型
-        md5sum libchdb.so
-        ls -l libchdb.so
-        uname -m         # 查看 Runner 架构（应为 x86_64/arm64）
-    # - name: Fetch library
+    # - name: Check Library Architecture
     #   run: |
-    #       make install
+    #     git lfs pull --include="*.so"
+    #     file libchdb.so  # 查看文件类型
+    #     md5sum libchdb.so
+    #     ls -l libchdb.so
+    #     uname -m         # 查看 Runner 架构（应为 x86_64/arm64）
+    - name: Fetch library
+      run: |
+          make install
     # - name: Install libchdb
     #   run: |
     #     sudo mkdir -p /usr/local/lib /usr/local/include
