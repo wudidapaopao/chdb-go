@@ -72,11 +72,11 @@ jobs:
     - name: Testtt
       run: go test ./chdb/driver -gcflags="all=-N -l" -c -o mytest.test3
     - name: Test2
-      run: ulimit -c unlimited && ./mytest.test -test.count 100 --test.v
-    - name: Test3
-      run: ulimit -c unlimited && ./mytest.test2 -test.count 100 --test.v
-    - name: Test4
-      run: ulimit -c unlimited && ./mytest.test3 -test.count 100 --test.v
+      run: ulimit -c unlimited && ./mytest.test -test.count 1000 --test.v
+    # - name: Test3
+    #   run: ulimit -c unlimited && ./mytest.test2 -test.count 100 --test.v
+    # - name: Test4
+    #   run: ulimit -c unlimited && ./mytest.test3 -test.count 100 --test.v
     # - name: Test5
     #   run: ./mytest.test -test.count 10 --test.v || true
     # - name: Test6
