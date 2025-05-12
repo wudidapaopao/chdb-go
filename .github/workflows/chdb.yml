@@ -41,9 +41,13 @@ jobs:
         sudo sysctl -w kern.coredump=1
         sudo sysctl kern.corefile=./core.%P
         sudo chmod 1777 ./
-    - name: Fetch library
+    - name: Check Library Architecture
       run: |
-          make install
+        file libchdb.so  # 查看文件类型
+        uname -m         # 查看 Runner 架构（应为 x86_64/arm64）
+    # - name: Fetch library
+    #   run: |
+    #       make install
     # - name: Install libchdb
     #   run: |
     #     sudo mkdir -p /usr/local/lib /usr/local/include
