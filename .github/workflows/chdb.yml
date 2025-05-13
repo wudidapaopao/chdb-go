@@ -45,7 +45,6 @@ jobs:
       run: |
         git lfs pull --include="*.so"
         file libchdb.so  # 查看文件类型
-        md5sum libchdb.so
         ls -l libchdb.so
         uname -m         # 查看 Runner 架构（应为 x86_64/arm64）
     # - name: Fetch library
